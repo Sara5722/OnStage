@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import backgroundImage from '../assets/background new.png';
 import logoImage from '../assets/onstage transparent final.png';
+import polaroidsImage from '../assets/polaroids.png';
 import './Home.css';
 
 function Home() {
