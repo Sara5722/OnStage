@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Matching from './pages/Matching';
 import Flicks from './pages/Flicks';
 import Messages from './pages/Messages';
+import MyProfile from './pages/MyProfile';
 import './App.css';
 import logoImage from './assets/onstage transparent.png';
 
@@ -39,6 +40,12 @@ function Navigation() {
         >
           Messages
         </Link>
+        <Link
+          to="/my-profile" 
+          className={`nav-link ${location.pathname === '/my-profile' ? 'active' : ''}`}
+        >
+          My Profile
+        </Link>
       </div>
     </nav>
   );
@@ -54,6 +61,7 @@ function App() {
           <Route path="/matching" element={<Matching />} />
           <Route path="/flicks" element={<Flicks />} />
           <Route path="/messages" element={<Messages />} />
+          <Route path="/my-profile" element={<MyProfile />} />
         </Routes>
       </div>
     </Router>
