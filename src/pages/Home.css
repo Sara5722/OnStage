@@ -38,21 +38,40 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.25rem;
+  gap: 2rem;
 }
 
 .hero-logo {
   pointer-events: none;
-  /* nudge logo down slightly to close gap with buttons */
-  transform: translateY(6px);
+  /* nudge logo further down to visually lower the PNG relative to the slogan */
+  transform: translateY(36px);
   transition: transform 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
 }
 
 .hero-logo img {
+  display: block; /* remove baseline whitespace */
   max-width: 700px;
   width: 100%;
   height: auto;
   filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
+  margin-bottom: -2.5rem; /* pull the following slogan upward (increase to move logo visually down)
+                         adjust if overlapping occurs */
+}
+
+.hero-slogan {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 400;
+  font-size: 3rem;
+  color: #ffffff;
+  margin: 0;
+  margin-bottom: 1.5rem; /* add spacing between slogan and the buttons below */
+  letter-spacing: 0.02em;
+  text-align: right;
+  margin-top: -0.2rem; /* fine-tune spacing if needed */
 }
 
 .hero-actions {
@@ -73,7 +92,7 @@
   background: #401515;
   color: var(--text-primary);
   transition: all 0.3s ease;
-  border: none;
+  border: 1px solid #ffffff;
   cursor: pointer;
 }
 
