@@ -18,6 +18,8 @@ function Home() {
 
   return (
     <div className="home-page">
+      <div className="striped-rectangle"></div>
+      <div className="bar-under-rectangle"></div>
       <div className="home-hero">
         <div className="hero-content fade-in">
           <h1 className="hero-title">OnStage</h1>
