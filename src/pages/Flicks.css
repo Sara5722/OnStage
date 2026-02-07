@@ -1,0 +1,195 @@
+.flicks-page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+.flicks-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.flick-item {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.flick-video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-secondary);
+  overflow: hidden;
+}
+
+.flick-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+}
+
+.play-button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(196, 30, 58, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.play-overlay:hover .play-button {
+  transform: scale(1.1);
+  background: var(--accent-red);
+}
+
+.flick-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+  padding: 2rem;
+  color: var(--text-primary);
+  pointer-events: none;
+}
+
+.flick-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.creator-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.creator-role {
+  font-size: 0.9rem;
+  color: var(--accent-red);
+  font-weight: 500;
+}
+
+.flick-stats {
+  display: flex;
+  gap: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.stat-icon {
+  font-size: 1.1rem;
+}
+
+.flick-description {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.flick-actions {
+  display: flex;
+  gap: 1.5rem;
+  pointer-events: auto;
+}
+
+.action-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.action-icon .icon {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.action-icon:hover .icon {
+  transform: scale(1.2);
+}
+
+.like-btn:hover {
+  color: var(--accent-red);
+}
+
+.comment-btn:hover {
+  color: var(--text-secondary);
+}
+
+.share-btn:hover {
+  color: var(--accent-red);
+}
+
+/* Hide scrollbar but keep functionality */
+.flicks-container::-webkit-scrollbar {
+  display: none;
+}
+
+.flicks-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (max-width: 768px) {
+  .flick-info {
+    padding: 1.5rem;
+  }
+  
+  .creator-info h3 {
+    font-size: 1.1rem;
+  }
+  
+  .flick-actions {
+    gap: 1rem;
+  }
+  
+  .action-icon {
+    font-size: 0.75rem;
+  }
+  
+  .action-icon .icon {
+    font-size: 1.3rem;
+  }
+}
+
