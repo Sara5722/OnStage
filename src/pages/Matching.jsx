@@ -1,5 +1,29 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
+import marcusImage1 from '../assets/marcus.jpg';
+import marcusImage2 from '../assets/marcus2.jpg';
+import marcusImage3 from '../assets/marcus3.jpg';
+import marcusImage4 from '../assets/marcus4.jpg';
+import alexandraImage1 from '../assets/alexandra.jpg';
+import alexandraImage2 from '../assets/alexandra2.jpg';
+import alexandraImage3 from '../assets/alexandra3.jpg';
+import alexandraImage4 from '../assets/alexandra4.jpg';
+import dannyImage1 from '../assets/danny.jpg';
+import dannyImage2 from '../assets/danny2.jpg';
+import dannyImage3 from '../assets/danny3.jpg';
+import dannyImage4 from '../assets/danny4.jpg';
+import zendayaImage1 from '../assets/zendaya.jpg';
+import zendayaImage2 from '../assets/zendaya2.jpg';
+import zendayaImage3 from '../assets/zendaya3.jpg';
+import zendayaImage4 from '../assets/zendaya4.jpg';
+import arianaImage1 from '../assets/ariana.jpg';
+import arianaImage2 from '../assets/ariana2.jpg';
+import arianaImage3 from '../assets/ariana3.jpg';
+import arianaImage4 from '../assets/ariana4.jpg';
+import mikeImage1 from '../assets/mike.jpg';
+import mikeImage2 from '../assets/mike2.jpg';
+import mikeImage3 from '../assets/mike3.jpg';
+import mikeImage4 from '../assets/mike4.jpg';
 import './Matching.css';
 
 // Mock data for profiles
@@ -12,10 +36,10 @@ const mockProfiles = [
     location: 'Los Angeles, CA',
     experience: 'Professional',
     pay: 'One-time',
-    abilities: ['Storyboarding', 'Casting', 'Festival Strategy'],
+    abilities: ['Storyboarding', 'Casting', 'Festival Strategy', 'Script Development', 'Shot Design'],
     project: 'Movie',
     company: 'Walt Disney Studios',
-    bio: 'Award-winning director specializing in indie dramas with a soft spot for character-driven thrillers. I love building collaborative sets where every department gets a voice. Looking for passionate screenwriters and actors who want to make something tender and bold.',
+    bio: 'Award-winning director specializing in indie dramas with a soft spot for character-driven thrillers. I love building collaborative sets where every department gets a voice, the tone is intentional, and the camera always has a point of view. Looking for passionate screenwriters and actors who want to make something tender, tense, and bold with a clear visual language.',
     prompts: [
       {
         question: 'Signature on-set ritual',
@@ -31,12 +55,18 @@ const mockProfiles = [
       },
     ],
     images: [
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=1100&fit=crop',
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&h=1100&fit=crop',
-      'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&h=1100&fit=crop',
-      'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800&h=1100&fit=crop',
+      alexandraImage1,
+      alexandraImage2,
+      alexandraImage3,
+      alexandraImage4,
     ],
-    genres: ['Drama', 'Thriller'],
+    genres: ['Drama', 'Thriller', 'Mystery'],
+    quirks: ['Obsessed with blocking', 'Shoots on film when possible', 'Color palette moodboards'],
+    seeking: [
+      'Lead actor with dramatic range',
+      'DP with moody visual style',
+      'Script in final polish',
+    ],
     reel: 'https://example.com/reel1'
   },
   {
@@ -47,10 +77,10 @@ const mockProfiles = [
     location: 'New York, NY',
     experience: 'Advanced',
     pay: 'Recurring',
-    abilities: ['Comedy Writing', 'Action Beats', 'Pitch Decks'],
+    abilities: ['Comedy Writing', 'Action Beats', 'Pitch Decks', 'Punch-Up', 'Writers Room'],
     project: 'TV',
     company: 'Netflix Studios',
-    bio: 'Comedy-action screenwriter who loves smart banter and set pieces that actually matter. I build worlds with heart, high stakes, and a little chaos. Multiple scripts in development. Seeking directors and producers who like fast feedback and fearless rewrites.',
+    bio: 'Comedy-action screenwriter who loves smart banter and set pieces that actually matter. I build worlds with heart, high stakes, and a little chaos, plus plenty of room for improvisation. Multiple scripts in development. Seeking directors and producers who like fast feedback, table reads, and fearless rewrites that sharpen the story.',
     prompts: [
       {
         question: 'Logline I can not stop pitching',
@@ -66,83 +96,163 @@ const mockProfiles = [
       },
     ],
     images: [
-      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1100&fit=crop',
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&h=1100&fit=crop',
-      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=1100&fit=crop',
-      'https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?w=800&h=1100&fit=crop',
+      marcusImage1,
+      marcusImage2,
+      marcusImage3,
+      marcusImage4,
     ],
-    genres: ['Comedy', 'Action'],
+    genres: ['Comedy', 'Action', 'Thriller'],
+    quirks: ['Whiteboard addict', 'Cold-brew loyalist', 'Names characters after snacks'],
     reel: 'https://example.com/reel2'
   },
   {
     id: 3,
-    name: 'Sofia Martinez',
+    name: 'Zendaya',
     role: 'Actor',
-    age: 26,
-    location: 'Miami, FL',
-    experience: 'Intermediate',
-    pay: 'Hourly',
-    abilities: ['Stunts', 'Voiceover', 'Bilingual'],
-    project: 'Commercial',
-    company: 'Amazon MGM Studios',
-    bio: 'Bilingual actor with theater and film experience. I bring high energy, quick memorization, and a deep love of character work. Open to all genres and projects, especially commercials with cinematic flair.',
+    age: 28,
+    location: 'Los Angeles, CA',
+    experience: 'Professional',
+    pay: 'Recurring',
+    abilities: ['Acting', 'Voiceover', 'Action Training', 'Dramatic Acting'],
+    project: 'Movie',
+    company: 'HBO',
+    bio: 'Award-winning actor and producer known for emotionally grounded performances across film and television, including "Euphoria," the "Spider-Man" films, and "Dune." I am drawn to ambitious storytelling, strong directors, and characters with depth, vulnerability, and grit. I love sets that prioritize trust, rehearsal, and honest conversations about the work.',
     prompts: [
       {
-        question: 'Most unusual skill',
-        answer: 'Can switch accents mid-sentence without breaking character.'
+        question: 'Role I am proudest of',
+        answer: 'Characters who have to grow up too fast and still find their voice.'
       },
       {
-        question: 'Perfect set snack',
-        answer: 'Spicy mango slices and iced cafecito.'
+        question: 'Set energy I love',
+        answer: 'Focused, kind, and open to creative collaboration.'
       },
       {
-        question: 'Dream role',
-        answer: 'A quiet action lead who solves everything with empathy.'
+        question: 'What I look for',
+        answer: 'Stories that challenge me and teams that trust each other.'
       },
     ],
     images: [
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&h=1100&fit=crop',
-      'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=800&h=1100&fit=crop',
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&h=1100&fit=crop',
-      'https://images.unsplash.com/photo-1524502397800-2eeaad7c3fe5?w=800&h=1100&fit=crop',
+      zendayaImage1,
+      zendayaImage2,
+      zendayaImage3,
+      zendayaImage4,
     ],
-    genres: ['Drama', 'Comedy', 'Horror'],
+    genres: ['Drama', 'Comedy', 'Sci-Fi'],
+    quirks: ['Playlist for every role', 'Collects character journals', 'Loves long takes'],
     reel: 'https://example.com/reel3'
   },
   {
     id: 4,
-    name: 'David Kim',
-    role: 'Producer',
-    age: 35,
+    name: 'Ariana Grande',
+    role: 'Actor',
+    age: 31,
     location: 'Los Angeles, CA',
     experience: 'Professional',
-    pay: 'Expenses Covered',
-    abilities: ['Financing', 'Scheduling', 'Talent Relations'],
+    pay: 'Recurring',
+    abilities: ['Singing', 'Acting', 'Voiceover', 'Songwriting', 'Dance'],
     project: 'Movie',
-    company: 'Warner Bros. Discovery',
-    bio: 'Independent film producer focused on character-driven stories and emerging talent. I keep productions nimble, funded, and crew-friendly. Seeking directors and writers who care about story and process equally.',
+    company: 'Universal Pictures',
+    bio: 'Grammy-winning singer and actor known for powerhouse vocals and emotionally honest performances. I love ambitious, high-craft storytelling with music at the center, from pop stages to film sets like "Wicked." Looking for collaborators who value precision, play, and heart, and who take the emotional beats as seriously as the big moments.',
     prompts: [
       {
-        question: 'Green flag on a pitch',
-        answer: 'A clear why-now and a plan for finishing, not just starting.'
+        question: 'Creative sweet spot',
+        answer: 'Big emotions, clean melodies, and characters who feel real.'
       },
       {
-        question: 'What I bring',
-        answer: 'Budget clarity, schedule sanity, and a calm set.'
+        question: 'Set energy I love',
+        answer: 'Focused, warm, and playful with room to experiment.'
       },
       {
-        question: 'Go-to wrap gift',
-        answer: 'A custom zine with behind-the-scenes photos.'
+        question: 'What I look for',
+        answer: 'Teams that are kind, prepared, and excited to build something bold.'
       },
     ],
     images: [
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=1100&fit=crop',
-      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=1100&fit=crop',
-      'https://images.unsplash.com/photo-1480455624313-e29b44bbfde1?w=800&h=1100&fit=crop',
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&h=1100&fit=crop',
+      arianaImage1,
+      arianaImage2,
+      arianaImage3,
+      arianaImage4,
     ],
-    genres: ['Drama', 'Documentary'],
+    genres: ['Pop', 'Musical', 'Drama', 'Romance'],
+    quirks: ['Vocal warmups at sunrise', 'Likes handwritten lyric notes', 'Collects vintage mics'],
+    reel: 'https://example.com/reel5'
+  },
+  {
+    id: 5,
+    name: 'Danny DeVito',
+    role: 'Producer',
+    age: 81,
+    location: 'Los Angeles, CA',
+    experience: 'Professional',
+    pay: 'Expenses Covered',
+    abilities: ['Producing', 'Financing', 'Talent Relations', 'Voiceover'],
+    project: 'Movie',
+    company: 'Jersey Films',
+    bio: 'Veteran actor, director, and producer known for character-driven comedy and bold storytelling. I love projects with big heart, sharp wit, and a little bit of chaos. Looking to champion filmmakers who swing for the fences, respect the craft, and keep the set creative, collaborative, and on time.',
+    prompts: [
+      {
+        question: 'Project I always say yes to',
+        answer: 'Stories that are funny, fearless, and have real emotional stakes.'
+      },
+      {
+        question: 'Most fun role energy',
+        answer: 'The lovable wildcard who steals a scene with heart and mischief.'
+      },
+      {
+        question: 'On-set vibe',
+        answer: 'Warm, efficient, and always looking for the honest moment.'
+      },
+    ],
+    images: [
+      dannyImage1,
+      dannyImage2,
+      dannyImage3,
+      dannyImage4,
+    ],
+    genres: ['Drama', 'Comedy', 'Documentary'],
+    quirks: ['Always early to set', 'Loves practical gags', 'Champions new voices'],
+    seeking: [
+      'Ensemble casting for comedy',
+      'Tone: character-driven heart',
+      'Script ready to shoot',
+    ],
     reel: 'https://example.com/reel4'
+  },
+  {
+    id: 6,
+    name: 'Mike Williams',
+    role: 'Actor',
+    age: 30,
+    location: 'Chicago, IL',
+    experience: 'Advanced',
+    pay: 'Hourly',
+    abilities: ['Stage Combat', 'Improvisation', 'Voiceover', 'Dialect Work', 'Motion Capture'],
+    project: 'TV',
+    company: 'Lionsgate Studios',
+    bio: 'Versatile actor with a background in theater and on-camera work. I thrive in ensemble casts, love character-driven scripts, and bring grounded, quick-thinking energy to set. Looking for collaborators who value rehearsal, clear direction, and storytelling with momentum. I am especially drawn to projects that blend humor with high stakes.',
+    prompts: [
+      {
+        question: 'Most fun on set',
+        answer: 'Building a character through small, honest physical choices.'
+      },
+      {
+        question: 'My sweet spot',
+        answer: 'Dramedy roles that balance heart, humor, and stakes.'
+      },
+      {
+        question: 'What I bring',
+        answer: 'Preparedness, adaptability, and a collaborative mindset.'
+      },
+    ],
+    images: [
+      mikeImage1,
+      mikeImage2,
+      mikeImage3,
+      mikeImage4,
+    ],
+    genres: ['Drama', 'Comedy', 'Thriller'],
+    quirks: ['Keeps a role playlist', 'Notebook full of accents', 'Always ready for table reads'],
+    reel: 'https://example.com/reel6'
   },
 ];
 
@@ -720,6 +830,26 @@ function Matching() {
                   <span key={idx} className="genre-tag">{genre}</span>
                 ))}
               </div>
+              {currentProfile.quirks?.length > 0 && (
+                <div className="card-seeking">
+                  <span className="card-subtitle">Quirks</span>
+                  <div className="card-seeking-tags">
+                    {currentProfile.quirks.map((item, idx) => (
+                      <span key={idx} className="seeking-tag">{item}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {currentProfile.seeking?.length > 0 && (
+                <div className="card-seeking">
+                  <span className="card-subtitle">Looking for</span>
+                  <div className="card-seeking-tags">
+                    {currentProfile.seeking.map((item, idx) => (
+                      <span key={idx} className="seeking-tag">{item}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
               <div className="card-prompts">
                 {currentProfile.prompts?.map((prompt, idx) => (
                   <div key={idx} className="prompt-card">
