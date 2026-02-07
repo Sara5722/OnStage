@@ -7,9 +7,37 @@ import './Home.css';
 function Home() {
   const [showLogin, setShowLogin] = useState(false);
   const [showChatbot, setShowChatbot] = useState(false);
+  const [messages, setMessages] = useState([
+    { role: 'bot', text: "Hello! I'm your AI assistant. How can I help you find the perfect collaborator today?" }
+  ]);
+  const [chatInput, setChatInput] = useState('');
+  const [loadingChat, setLoadingChat] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  const handleSend = async () => {
+    const question = chatInput.trim();
+    if (!question) return;
+    const userMessage = { role: 'user', text: question };
+    setMessages((m) => [...m, userMessage]);
+    setChatInput('');
+    setLoadingChat(true);
+    try {
+      const res = await fetch('http://localhost:4000/api/query', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question })
+      });
+      const data = await res.json();
+      const botText = data.answer || 'Sorry, I could not find an answer.';
+      setMessages((m) => [...m, { role: 'bot', text: botText, sources: data.sources }]);
+    } catch (err) {
+      setMessages((m) => [...m, { role: 'bot', text: 'Error: ' + String(err) }]);
+    } finally {
+      setLoadingChat(false);
+    }
+  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -100,16 +128,30 @@ function Home() {
               </button>
             </div>
             <div className="chatbot-content">
-              <div className="chatbot-message bot">
-                <p>Hello! I'm your AI assistant. How can I help you find the perfect collaborator today?</p>
-              </div>
+              {messages.map((m, i) => (
+                <div key={i} className={`chatbot-message ${m.role === 'bot' ? 'bot' : 'user'}`}>
+                  <p>{m.text}</p>
+                  {m.sources && (
+                    <div className="chatbot-sources">
+                      <small>Sources: {m.sources.join(', ')}</small>
+                    </div>
+                  )}
+                </div>
+              ))}
+
               <div className="chatbot-input-area">
                 <input 
                   type="text" 
                   placeholder="Ask me anything about finding talent or projects..."
                   className="chatbot-input"
+                  value={chatInput}
+                  onChange={(e) => setChatInput(e.target.value)}
+                  onKeyDown={async (e) => { if (e.key === 'Enter') { e.preventDefault(); await handleSend(); } }}
+                  disabled={loadingChat}
                 />
-                <button className="send-button">Send</button>
+                <button className="send-button" onClick={async () => await handleSend()} disabled={loadingChat}>
+                  {loadingChat ? '...' : 'Send'}
+                </button>
               </div>
             </div>
           </div>
