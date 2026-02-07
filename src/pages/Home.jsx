@@ -2,13 +2,20 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import backgroundImage from '../assets/background new.png';
 import logoImage from '../assets/onstage transparent final.png';
+import polaroidsImage from '../assets/polaroids.png';
+import starsIcon from '../assets/stars.svg';
+import messageIcon from '../assets/message.svg';
+import cameraIcon from '../assets/camera.svg';
+import { getBotResponse } from '../utils/aiAssistant';
 import './Home.css';
+
+const INITIAL_BOT_MESSAGE = "Hi! I'm your AI assistant. I help you find the right people for your project—directors, actors, screenwriters, producers. Tell me what you're looking for (e.g. \"I need a director for an indie drama\" or \"Looking for a comedy screenwriter in LA\") and I'll suggest people who might be a good fit.";
 
 function Home() {
   const [showLogin, setShowLogin] = useState(false);
   const [showChatbot, setShowChatbot] = useState(false);
   const [messages, setMessages] = useState([
-    { role: 'bot', text: "Hello! I'm your AI assistant. How can I help you find the perfect collaborator today?" }
+    { role: 'bot', text: INITIAL_BOT_MESSAGE }
   ]);
   const [chatInput, setChatInput] = useState('');
   const [loadingChat, setLoadingChat] = useState(false);
@@ -16,27 +23,19 @@ function Home() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSend = async () => {
+  const handleSend = () => {
     const question = chatInput.trim();
     if (!question) return;
     const userMessage = { role: 'user', text: question };
     setMessages((m) => [...m, userMessage]);
     setChatInput('');
     setLoadingChat(true);
-    try {
-      const res = await fetch('http://localhost:4000/api/query', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question })
-      });
-      const data = await res.json();
-      const botText = data.answer || 'Sorry, I could not find an answer.';
-      setMessages((m) => [...m, { role: 'bot', text: botText, sources: data.sources }]);
-    } catch (err) {
-      setMessages((m) => [...m, { role: 'bot', text: 'Error: ' + String(err) }]);
-    } finally {
+    // Small delay so the user sees their message before the bot reply
+    setTimeout(() => {
+      const { text, suggestions } = getBotResponse(question);
+      setMessages((m) => [...m, { role: 'bot', text, suggestions: suggestions || undefined }]);
       setLoadingChat(false);
-    }
+    }, 400);
   };
 
   const handleLogin = (e) => {
@@ -67,7 +66,10 @@ function Home() {
                   Get Started
                 </button>
                 <button 
-                  onClick={() => setShowChatbot(true)} 
+                  onClick={() => {
+                    setMessages([{ role: 'bot', text: INITIAL_BOT_MESSAGE }]);
+                    setShowChatbot(true);
+                  }} 
                   className="cta-button secondary"
                 >
                   Ask AI Assistant
@@ -132,9 +134,24 @@ function Home() {
               {messages.map((m, i) => (
                 <div key={i} className={`chatbot-message ${m.role === 'bot' ? 'bot' : 'user'}`}>
                   <p>{m.text}</p>
-                  {m.sources && (
-                    <div className="chatbot-sources">
-                      <small>Sources: {m.sources.join(', ')}</small>
+                  {m.suggestions && m.suggestions.length > 0 && (
+                    <div className="chatbot-suggestions">
+                      {m.suggestions.map((person) => (
+                        <div key={person.id} className="chatbot-suggestion-card">
+                          <div className="chatbot-suggestion-info">
+                            <strong>{person.name}</strong>
+                            <span className="chatbot-suggestion-role">{person.role}</span>
+                            <p className="chatbot-suggestion-summary">{person.summary}</p>
+                          </div>
+                          <button
+                            type="button"
+                            className="chatbot-suggestion-btn"
+                            onClick={() => { setShowChatbot(false); navigate('/matching'); }}
+                          >
+                            View on Matching
+                          </button>
+                        </div>
+                      ))}
                     </div>
                   )}
                 </div>
@@ -143,14 +160,14 @@ function Home() {
               <div className="chatbot-input-area">
                 <input 
                   type="text" 
-                  placeholder="Ask me anything about finding talent or projects..."
+                  placeholder="e.g. I need a director for an indie drama..."
                   className="chatbot-input"
                   value={chatInput}
                   onChange={(e) => setChatInput(e.target.value)}
-                  onKeyDown={async (e) => { if (e.key === 'Enter') { e.preventDefault(); await handleSend(); } }}
+                  onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); handleSend(); } }}
                   disabled={loadingChat}
                 />
-                <button className="send-button" onClick={async () => await handleSend()} disabled={loadingChat}>
+                <button type="button" className="send-button" onClick={handleSend} disabled={loadingChat}>
                   {loadingChat ? '...' : 'Send'}
                 </button>
               </div>
@@ -277,22 +294,48 @@ function Home() {
         </div>
       </div>
 
+      {/* Maroon Spotlight Card Section */}
+      <div className="maroon-panel-section">
+        <div className="maroon-container">
+          <div className="polaroids">
+            <img src={polaroidsImage} alt="Polaroids" />
+          </div>
+          <div className="maroon-box">
+            <h2 className="maroon-title">Creative talent shouldn't be buried.</h2>
+            <h3 className="maroon-sub">WE HEAR YOU. WE GET YOU.</h3>
+            <p className="maroon-text">You've done the work, but discovery still feels random and gatekept.
+              <br />
+              OnStage connects creators through talent, vision, and creative alignment.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Features Section */}
       <div className="features-section">
         <div className="feature-card">
-          <div className="feature-icon">🎬</div>
-          <h3>Discover Talent</h3>
-          <p>Find actors, directors, and creatives that match your vision</p>
+          <div className="feature-icon">
+            <img src={starsIcon} alt="Discover Talent" />
+          </div>
+          <h3 className="feature-title">Discover Talent</h3>
+          <p className="feature-desc">Find actors, directors, and creatives that match your vision</p>
+          <a className="feature-button" href="/matching">Find Talent</a>
         </div>
         <div className="feature-card">
-          <div className="feature-icon">💬</div>
-          <h3>Connect & Collaborate</h3>
-          <p>Message directly and build your network in the industry</p>
+          <div className="feature-icon">
+            <img src={messageIcon} alt="Connect & Collaborate" />
+          </div>
+          <h3 className="feature-title">Connect & Collaborate</h3>
+          <p className="feature-desc">Message directly and build your network in the industry</p>
+          <a className="feature-button" href="/messages">Message</a>
         </div>
         <div className="feature-card">
-          <div className="feature-icon">🎥</div>
-          <h3>Showcase Work</h3>
-          <p>Share your reels, scripts, and portfolio with the community</p>
+          <div className="feature-icon">
+            <img src={cameraIcon} alt="Showcase Work" />
+          </div>
+          <h3 className="feature-title">Showcase Work</h3>
+          <p className="feature-desc">Share your reels, scripts, and portfolio with the community</p>
+          <a className="feature-button" href="/flicks">Explore Flicks</a>
         </div>
       </div>
     </div>

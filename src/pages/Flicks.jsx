@@ -1,84 +1,73 @@
 import { useState, useRef, useEffect } from 'react';
 import './Flicks.css';
 
-// Mock data for flicks/reels
+// Mock data for flicks/reels - YouTube Movie Trailers
 const mockFlicks = [
   {
     id: 1,
-    creator: 'Alexandra Chen',
+    creator: 'Jon M. Chu',
     role: 'Director',
-    title: 'Indie Drama Scene',
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-    thumbnail: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&h=600&fit=crop',
-    likes: 1240,
-    comments: 89,
-    views: 15200,
-    description: 'Behind the scenes of our latest indie drama. Looking for talented actors!'
+    title: 'Wicked',
+    youtubeId: 'HgwOx31qsK4',
+    likes: 2450,
+    comments: 189,
+    views: 45200,
+    description: 'A revisionist Oz tale that lingers on girlhood, power, and the politics of being misunderstood. Less fairy tale, more identity study wrapped in spectacle.'
   },
   {
     id: 2,
-    creator: 'Marcus Johnson',
-    role: 'Screenwriter',
-    title: 'Script Reading',
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
-    thumbnail: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=600&fit=crop',
-    likes: 890,
-    comments: 45,
-    views: 9800,
-    description: 'First table read of my new comedy script. Feedback welcome!'
+    creator: 'Matt Reeves',
+    role: 'Director',
+    title: 'The Batman',
+    youtubeId: 'mqqft2x_Aa4',
+    likes: 3120,
+    comments: 245,
+    views: 67800,
+    description: 'A rain-soaked neo-noir where Batman feels more like a recluse detective than a superhero, drifting through a city rotting from the inside.'
   },
   {
     id: 3,
-    creator: 'Sofia Martinez',
-    role: 'Actor',
-    title: 'Monologue Practice',
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-    thumbnail: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop',
-    likes: 2100,
+    creator: 'Eiichiro Oda (Adapted)',
+    role: 'Creator',
+    title: 'One Piece (Live Action)',
+    youtubeId: 'Ades3pQbeh8',
+    likes: 2890,
     comments: 156,
-    views: 23400,
-    description: 'Practicing for an upcoming audition. What do you think?'
+    views: 54300,
+    description: 'A surprisingly earnest pirate odyssey about chosen family and impossible dreams, balancing cartoonish joy with quiet emotional beats.'
   },
   {
     id: 4,
-    creator: 'David Kim',
-    role: 'Producer',
-    title: 'Project Announcement',
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-    thumbnail: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=600&fit=crop',
-    likes: 567,
-    comments: 32,
-    views: 6700,
-    description: 'Excited to announce our next documentary project!'
+    creator: 'Bong Joon-ho',
+    role: 'Director',
+    title: 'Parasite',
+    youtubeId: '5xH0HfJHsaY',
+    likes: 4100,
+    comments: 312,
+    views: 78900,
+    description: 'A genre-blurring social thriller where class tension simmers in silences, architecture, and what lurks just out of frame.'
   },
   {
     id: 5,
-    creator: 'Emma Thompson',
-    role: 'Actor',
-    title: 'Character Study',
-    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-    thumbnail: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=600&fit=crop',
+    creator: 'Park Chan-wook',
+    role: 'Director',
+    title: 'Decision to Leave',
+    youtubeId: 'Bmoy73lhs-s',
     likes: 1890,
     comments: 112,
-    views: 18900,
-    description: 'Exploring my character for an upcoming role. Thoughts?'
+    views: 38900,
+    description: 'A melancholic romantic mystery told in glances and half-truths, where longing is more dangerous than the crime itself.'
   },
 ];
+
 
 function Flicks() {
   const [flicks, setFlicks] = useState(mockFlicks);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const videoRefs = useRef([]);
   const containerRef = useRef(null);
 
   useEffect(() => {
-    // Auto-play first video
-    if (videoRefs.current[0]) {
-      videoRefs.current[0].play().catch(() => {
-        // Autoplay blocked, user interaction required
-      });
-    }
+    // Optional: Handle scroll behavior for video transitions
   }, []);
 
   const handleScroll = (e) => {
@@ -90,31 +79,7 @@ function Flicks() {
     const newIndex = Math.round(scrollTop / itemHeight);
 
     if (newIndex !== currentIndex && newIndex >= 0 && newIndex < flicks.length) {
-      // Pause previous video
-      if (videoRefs.current[currentIndex]) {
-        videoRefs.current[currentIndex].pause();
-      }
-      
       setCurrentIndex(newIndex);
-      
-      // Play new video
-      if (videoRefs.current[newIndex]) {
-        videoRefs.current[newIndex].play().catch(() => {});
-        setIsPlaying(true);
-      }
-    }
-  };
-
-  const togglePlayPause = (index) => {
-    const video = videoRefs.current[index];
-    if (!video) return;
-
-    if (video.paused) {
-      video.play();
-      setIsPlaying(true);
-    } else {
-      video.pause();
-      setIsPlaying(false);
     }
   };
 
@@ -135,23 +100,18 @@ function Flicks() {
           <div 
             key={flick.id} 
             className="flick-item"
-            onClick={() => togglePlayPause(index)}
           >
             <div className="flick-video-wrapper">
-              <video
-                ref={el => videoRefs.current[index] = el}
-                src={flick.videoUrl}
+              <iframe
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${flick.youtubeId}`}
+                title={flick.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
                 className="flick-video"
-                loop
-                muted
-                playsInline
-                poster={flick.thumbnail}
-              />
-              {videoRefs.current[index]?.paused && (
-                <div className="play-overlay">
-                  <div className="play-button">▶</div>
-                </div>
-              )}
+              ></iframe>
             </div>
             
             <div className="flick-info">

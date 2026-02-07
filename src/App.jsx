@@ -5,7 +5,7 @@ import Flicks from './pages/Flicks';
 import Messages from './pages/Messages';
 import MyProfile from './pages/MyProfile';
 import './App.css';
-import logoImage from './assets/onstage transparent.png';
+import logoImage from './assets/onstage transparent final.png';
 
 function Navigation() {
   const location = useLocation();
