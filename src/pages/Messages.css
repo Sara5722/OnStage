@@ -78,18 +78,19 @@
 
 /* Group chat – stacked avatars in list */
 .conv-avatar-group {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   position: relative;
   flex-shrink: 0;
 }
 
 .conv-avatar-group-img {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--bg-secondary);
+  position: absolute;
 }
 
 .conv-unread {
@@ -129,8 +130,8 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--accent-red);
-  background: rgba(196, 30, 58, 0.15);
+  color: #ff4d4f;
+  background: rgba(255, 77, 79, 0.2);
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
   margin-right: 0.4rem;
@@ -176,7 +177,7 @@
   font-size: 0.7rem;
   font-weight: 600;
   color: #fff;
-  background: var(--accent-red);
+  background: #ff4d4f;
   padding: 0.2rem 0.55rem;
   border-radius: 999px;
   line-height: 1;
@@ -272,8 +273,8 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--accent-red);
-  background: rgba(196, 30, 58, 0.15);
+  color: #ff4d4f;
+  background: rgba(255, 77, 79, 0.2);
   padding: 0.12rem 0.35rem;
   border-radius: 4px;
   margin-right: 0.35rem;
@@ -350,7 +351,7 @@
 .chat-bubble--with-sender .bubble-sender {
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--accent-red);
+  color: #fff;
   margin-bottom: 0.15rem;
 }
 
