@@ -2,13 +2,16 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import backgroundImage from '../assets/background new.png';
 import logoImage from '../assets/onstage transparent final.png';
+import { getBotResponse } from '../utils/aiAssistant';
 import './Home.css';
+
+const INITIAL_BOT_MESSAGE = "Hi! I'm your AI assistant. I help you find the right people for your project—directors, actors, screenwriters, producers. Tell me what you're looking for (e.g. \"I need a director for an indie drama\" or \"Looking for a comedy screenwriter in LA\") and I'll suggest people who might be a good fit.";
 
 function Home() {
   const [showLogin, setShowLogin] = useState(false);
   const [showChatbot, setShowChatbot] = useState(false);
   const [messages, setMessages] = useState([
-    { role: 'bot', text: "Hello! I'm your AI assistant. How can I help you find the perfect collaborator today?" }
+    { role: 'bot', text: INITIAL_BOT_MESSAGE }
   ]);
   const [chatInput, setChatInput] = useState('');
   const [loadingChat, setLoadingChat] = useState(false);
@@ -16,27 +19,19 @@ function Home() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSend = async () => {
+  const handleSend = () => {
     const question = chatInput.trim();
     if (!question) return;
     const userMessage = { role: 'user', text: question };
     setMessages((m) => [...m, userMessage]);
     setChatInput('');
     setLoadingChat(true);
-    try {
-      const res = await fetch('http://localhost:4000/api/query', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question })
-      });
-      const data = await res.json();
-      const botText = data.answer || 'Sorry, I could not find an answer.';
-      setMessages((m) => [...m, { role: 'bot', text: botText, sources: data.sources }]);
-    } catch (err) {
-      setMessages((m) => [...m, { role: 'bot', text: 'Error: ' + String(err) }]);
-    } finally {
+    // Small delay so the user sees their message before the bot reply
+    setTimeout(() => {
+      const { text, suggestions } = getBotResponse(question);
+      setMessages((m) => [...m, { role: 'bot', text, suggestions: suggestions || undefined }]);
       setLoadingChat(false);
-    }
+    }, 400);
   };
 
   const handleLogin = (e) => {
@@ -67,7 +62,10 @@ function Home() {
                   Get Started
                 </button>
                 <button 
-                  onClick={() => setShowChatbot(true)} 
+                  onClick={() => {
+                    setMessages([{ role: 'bot', text: INITIAL_BOT_MESSAGE }]);
+                    setShowChatbot(true);
+                  }} 
                   className="cta-button secondary"
                 >
                   Ask AI Assistant
@@ -132,9 +130,24 @@ function Home() {
               {messages.map((m, i) => (
                 <div key={i} className={`chatbot-message ${m.role === 'bot' ? 'bot' : 'user'}`}>
                   <p>{m.text}</p>
-                  {m.sources && (
-                    <div className="chatbot-sources">
-                      <small>Sources: {m.sources.join(', ')}</small>
+                  {m.suggestions && m.suggestions.length > 0 && (
+                    <div className="chatbot-suggestions">
+                      {m.suggestions.map((person) => (
+                        <div key={person.id} className="chatbot-suggestion-card">
+                          <div className="chatbot-suggestion-info">
+                            <strong>{person.name}</strong>
+                            <span className="chatbot-suggestion-role">{person.role}</span>
+                            <p className="chatbot-suggestion-summary">{person.summary}</p>
+                          </div>
+                          <button
+                            type="button"
+                            className="chatbot-suggestion-btn"
+                            onClick={() => { setShowChatbot(false); navigate('/matching'); }}
+                          >
+                            View on Matching
+                          </button>
+                        </div>
+                      ))}
                     </div>
                   )}
                 </div>
@@ -143,14 +156,14 @@ function Home() {
               <div className="chatbot-input-area">
                 <input 
                   type="text" 
-                  placeholder="Ask me anything about finding talent or projects..."
+                  placeholder="e.g. I need a director for an indie drama..."
                   className="chatbot-input"
                   value={chatInput}
                   onChange={(e) => setChatInput(e.target.value)}
-                  onKeyDown={async (e) => { if (e.key === 'Enter') { e.preventDefault(); await handleSend(); } }}
+                  onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); handleSend(); } }}
                   disabled={loadingChat}
                 />
-                <button className="send-button" onClick={async () => await handleSend()} disabled={loadingChat}>
+                <button type="button" className="send-button" onClick={handleSend} disabled={loadingChat}>
                   {loadingChat ? '...' : 'Send'}
                 </button>
               </div>

@@ -47,7 +47,7 @@ const mockConversations = [
     name: 'Alexandra Martinez',
     role: 'Producer',
     avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
-    lastMessage: 'The budget looks good. We can move forward.',
+    lastMessage: '',
     lastTime: 'Yesterday',
     unread: 0,
   },

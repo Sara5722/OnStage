@@ -266,6 +266,55 @@
   margin-left: auto;
 }
 
+.chatbot-suggestions {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.chatbot-suggestion-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: border-color 0.2s ease;
+}
+
+.chatbot-suggestion-card:hover {
+  border-color: var(--accent-red);
+}
+
+.chatbot-suggestion-info strong {
+  color: var(--text-primary);
+  margin-right: 0.5rem;
+}
+
+.chatbot-suggestion-role {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--accent-red);
+  letter-spacing: 0.03em;
+}
+
+.chatbot-suggestion-summary {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0.25rem 0 0;
+  line-height: 1.4;
+}
+
+.chatbot-suggestion-btn {
+  align-self: flex-start;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.8rem;
+  border-radius: 6px;
+}
+
 .chatbot-input-area {
   display: flex;
   gap: 0.5rem;
