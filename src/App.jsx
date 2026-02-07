@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Matching from './pages/Matching';
 import Flicks from './pages/Flicks';
 import './App.css';
+import logoImage from './assets/onstage transparent.png';
 
 function Navigation() {
   const location = useLocation();
@@ -10,7 +11,7 @@ function Navigation() {
   return (
     <nav className="nav">
       <Link to="/" className="nav-logo">
-        OnStage
+        <img src={logoImage} alt="OnStage" className="nav-logo-img" />
       </Link>
       <div className="nav-links">
         <Link 
