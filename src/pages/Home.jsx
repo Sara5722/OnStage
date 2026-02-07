@@ -58,6 +58,7 @@ function Home() {
         <div className="hero-logo-section">
             <div className="hero-logo">
               <img src={logoImage} alt="OnStage" />
+              <p className="hero-slogan">Where creatives find their cast</p>
             </div>
 
             {!showLogin ? (
