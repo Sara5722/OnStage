@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import backgroundImage from '../assets/background new.png';
 import logoImage from '../assets/onstage transparent final.png';
 import polaroidsImage from '../assets/polaroids.png';
+import starsIcon from '../assets/stars.svg';
+import messageIcon from '../assets/message.svg';
+import cameraIcon from '../assets/camera.svg';
 import './Home.css';
 
 function Home() {
@@ -278,22 +281,48 @@ function Home() {
         </div>
       </div>
 
+      {/* Maroon Spotlight Card Section */}
+      <div className="maroon-panel-section">
+        <div className="maroon-container">
+          <div className="polaroids">
+            <img src={polaroidsImage} alt="Polaroids" />
+          </div>
+          <div className="maroon-box">
+            <h2 className="maroon-title">Creative talent shouldn't be buried.</h2>
+            <h3 className="maroon-sub">WE HEAR YOU. WE GET YOU.</h3>
+            <p className="maroon-text">You've done the work, but discovery still feels random and gatekept.
+              <br />
+              OnStage connects creators through talent, vision, and creative alignment.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Features Section */}
       <div className="features-section">
         <div className="feature-card">
-          <div className="feature-icon">🎬</div>
-          <h3>Discover Talent</h3>
-          <p>Find actors, directors, and creatives that match your vision</p>
+          <div className="feature-icon">
+            <img src={starsIcon} alt="Discover Talent" />
+          </div>
+          <h3 className="feature-title">Discover Talent</h3>
+          <p className="feature-desc">Find actors, directors, and creatives that match your vision</p>
+          <a className="feature-button" href="/matching">Find Talent</a>
         </div>
         <div className="feature-card">
-          <div className="feature-icon">💬</div>
-          <h3>Connect & Collaborate</h3>
-          <p>Message directly and build your network in the industry</p>
+          <div className="feature-icon">
+            <img src={messageIcon} alt="Connect & Collaborate" />
+          </div>
+          <h3 className="feature-title">Connect & Collaborate</h3>
+          <p className="feature-desc">Message directly and build your network in the industry</p>
+          <a className="feature-button" href="/messages">Message</a>
         </div>
         <div className="feature-card">
-          <div className="feature-icon">🎥</div>
-          <h3>Showcase Work</h3>
-          <p>Share your reels, scripts, and portfolio with the community</p>
+          <div className="feature-icon">
+            <img src={cameraIcon} alt="Showcase Work" />
+          </div>
+          <h3 className="feature-title">Showcase Work</h3>
+          <p className="feature-desc">Share your reels, scripts, and portfolio with the community</p>
+          <a className="feature-button" href="/flicks">Explore Flicks</a>
         </div>
       </div>
     </div>

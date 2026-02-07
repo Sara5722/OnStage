@@ -54,18 +54,17 @@
 
 .hero-logo img {
   display: block; /* remove baseline whitespace */
-  max-width: 700px;
+  max-width: 460px;
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
-  margin-bottom: -2.5rem; /* pull the following slogan upward (increase to move logo visually down)
-                         adjust if overlapping occurs */
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
+  margin-bottom: -1rem; /* pull the following slogan upward; reduced to avoid overlap */
 }
 
 .hero-slogan {
   font-family: 'Be Vietnam Pro', sans-serif;
   font-weight: 400;
-  font-size: 3rem;
+  font-size: 2rem;
   color: #ffffff;
   margin: 0;
   margin-bottom: 1.5rem; /* add spacing between slogan and the buttons below */
@@ -342,8 +341,23 @@
 
 /* Maroon Spotlight Card Section */
 .maroon-panel-section {
-  background: #2f2f2f; /* dark gray */
-  padding: 4rem 0 6rem; /* extra bottom padding to give room */
+  background: linear-gradient(135deg, #3a3a3a 0%, #0f0f0f 100%), url('../assets/stars.jpg') center/cover;
+  background-color: #2f2f2f;
+  padding: 10rem 0 6rem;
+  position: relative;
+}
+
+.maroon-panel-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
 }
 
 .maroon-container {
@@ -359,27 +373,26 @@
   background: #5a1f1f; /* maroon */
   color: var(--text-primary);
   border-radius: 12px;
-  padding: 3rem 3.5rem;
+  padding: 5rem 3.5rem 4rem;
   width: 100%;
   max-width: 900px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   position: relative;
+  text-align: center;
 }
 
 .polaroids {
   position: absolute;
-  top: -60px;
+  top: -150px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 5;
+  z-index: 10;
 }
 
 .polaroids img {
   width: 260px;
   height: auto;
   display: block;
-  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.5));
 }
 
 .maroon-title {
@@ -577,9 +590,43 @@
   margin-bottom: 1rem;
 }
 
-.feature-card h3 {
+.feature-icon img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.feature-title {
+  font-family: 'Source Serif 4', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.4rem;
   margin-bottom: 1rem;
   color: var(--text-primary);
+}
+
+.feature-desc {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.feature-button {
+  display: inline-block;
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  background: var(--accent-red);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.12s ease;
+}
+
+.feature-button:hover {
+  background: #5a1f1f;
+  transform: translateY(-2px);
 }
 
 .feature-card p {
