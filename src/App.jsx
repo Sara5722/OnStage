@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react
 import Home from './pages/Home';
 import Matching from './pages/Matching';
 import Flicks from './pages/Flicks';
+import Messages from './pages/Messages';
 import './App.css';
 import logoImage from './assets/onstage transparent.png';
 
@@ -32,6 +33,12 @@ function Navigation() {
         >
           Flicks
         </Link>
+        <Link 
+          to="/messages" 
+          className={`nav-link ${location.pathname === '/messages' ? 'active' : ''}`}
+        >
+          Messages
+        </Link>
       </div>
     </nav>
   );
@@ -46,6 +53,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/matching" element={<Matching />} />
           <Route path="/flicks" element={<Flicks />} />
+          <Route path="/messages" element={<Messages />} />
         </Routes>
       </div>
     </Router>

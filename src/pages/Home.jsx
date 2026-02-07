@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import backgroundImage from '../assets/background new.png';
-import logoImage from '../assets/onstage transparent.png';
+import logoImage from '../assets/onstage transparent final.png';
 import './Home.css';
 
 function Home() {
@@ -160,6 +160,7 @@ function Home() {
 
       {/* Featured Opportunities Section */}
       <div className="opportunities-section">
+        <h2 className="spotlight-title">Spotlight</h2>
         <div className="opportunities-container">
           <div className="opportunity-panel">
             <div className="opportunity-content">
@@ -170,8 +171,7 @@ function Home() {
               <h3 className="opportunity-title">Seeking Director for Indie Drama</h3>
               <p className="opportunity-text">
                 I'm looking for a director to bring my character-driven indie drama script to life. 
-                The story follows a young woman's journey through loss and self-discovery. Seeking 
-                someone with experience in emotional storytelling and visual poetry. Budget: $50K-$100K.
+                Seeking someone with experience in emotional storytelling and visual poetry.
               </p>
               <div className="opportunity-tags">
                 <span className="tag">Drama</span>
@@ -184,7 +184,7 @@ function Home() {
             </div>
             <div className="opportunity-image">
               <img 
-                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=500&fit=crop" 
+                src="src/assets/indie-drama.jpg" 
                 alt="Sarah Chen - Screenwriter"
               />
             </div>
@@ -198,8 +198,7 @@ function Home() {
               </div>
               <h3 className="opportunity-title">Casting Lead Actor for Thriller</h3>
               <p className="opportunity-text">
-                Casting for a psychological thriller shooting in NYC this fall. Looking for a male 
-                lead, 25-35, with strong dramatic range. Must be available for 4-week shoot. 
+                Casting for a psychological thriller shooting in NYC this fall. Must be available for 4-week shoot. 
                 Union/non-union welcome. Reel and headshot required.
               </p>
               <div className="opportunity-tags">
@@ -213,7 +212,7 @@ function Home() {
             </div>
             <div className="opportunity-image">
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop" 
+                src="src/assets/marcus.jpg" 
                 alt="Marcus Johnson - Director"
               />
             </div>
@@ -228,8 +227,7 @@ function Home() {
               <h3 className="opportunity-title">Seeking Screenwriter for Comedy Series</h3>
               <p className="opportunity-text">
                 Production company seeking experienced comedy screenwriter for 8-episode web series. 
-                Looking for someone with sharp wit and experience in ensemble comedy. Budget secured. 
-                Remote collaboration possible.
+                Looking for someone with experience in ensemble comedy.
               </p>
               <div className="opportunity-tags">
                 <span className="tag">Comedy</span>
@@ -242,7 +240,7 @@ function Home() {
             </div>
             <div className="opportunity-image">
               <img 
-                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=500&fit=crop" 
+                src="src/assets/alexandra.jpg" 
                 alt="Alexandra Martinez - Producer"
               />
             </div>
@@ -256,9 +254,8 @@ function Home() {
               </div>
               <h3 className="opportunity-title">Looking for Director for Short Film</h3>
               <p className="opportunity-text">
-                Actor/producer seeking a visionary director for my passion project - a 15-minute 
-                short film about identity and belonging. I'll be starring and producing. Looking 
-                for someone who shares this vision and can bring creative energy to the project.
+                Actor/producer seeking a visionary director for my passion project: a 15-minute 
+                short film about identity and belonging.
               </p>
               <div className="opportunity-tags">
                 <span className="tag">Short Film</span>
@@ -271,7 +268,7 @@ function Home() {
             </div>
             <div className="opportunity-image">
               <img 
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop" 
+                src="src/assets/indie-director.jpeg" 
                 alt="David Kim - Actor"
               />
             </div>
