@@ -48,6 +48,8 @@ function Home() {
 
   return (
     <div className="home-page">
+      <div className="striped-rectangle"></div>
+      <div className="bar-under-rectangle"></div>
       <div className="home-hero">
         {/* Background Collage Image */}
         <div className="hero-background">
