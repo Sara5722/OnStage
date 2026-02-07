@@ -12,53 +12,54 @@ const mockFlicks = [
     likes: 2450,
     comments: 189,
     views: 45200,
-    description: 'The untold story of the witches of Oz. Experience the magic.'
+    description: 'A revisionist Oz tale that lingers on girlhood, power, and the politics of being misunderstood. Less fairy tale, more identity study wrapped in spectacle.'
   },
   {
     id: 2,
-    creator: 'Barry Jenkins',
+    creator: 'Matt Reeves',
     role: 'Director',
-    title: 'Mufasa: The Lion King',
+    title: 'The Batman',
     youtubeId: 'mqqft2x_Aa4',
     likes: 3120,
     comments: 245,
     views: 67800,
-    description: 'The origin story of Mufasa unfolds. Coming soon!'
+    description: 'A rain-soaked neo-noir where Batman feels more like a recluse detective than a superhero, drifting through a city rotting from the inside.'
   },
   {
     id: 3,
-    creator: 'Ron Clements',
-    role: 'Director',
-    title: 'Moana 2',
+    creator: 'Eiichiro Oda (Adapted)',
+    role: 'Creator',
+    title: 'One Piece (Live Action)',
     youtubeId: 'Ades3pQbeh8',
     likes: 2890,
     comments: 156,
     views: 54300,
-    description: 'Moana sails beyond the reef for an epic new adventure.'
+    description: 'A surprisingly earnest pirate odyssey about chosen family and impossible dreams, balancing cartoonish joy with quiet emotional beats.'
   },
   {
     id: 4,
-    creator: 'Jeff Fowler',
+    creator: 'Bong Joon-ho',
     role: 'Director',
-    title: 'Sonic 3',
+    title: 'Parasite',
     youtubeId: '5xH0HfJHsaY',
     likes: 4100,
     comments: 312,
     views: 78900,
-    description: 'Sonic and friends face new challenges in their latest adventure.'
+    description: 'A genre-blurring social thriller where class tension simmers in silences, architecture, and what lurks just out of frame.'
   },
   {
     id: 5,
-    creator: 'Ridley Scott',
+    creator: 'Park Chan-wook',
     role: 'Director',
-    title: 'Gladiator II',
+    title: 'Decision to Leave',
     youtubeId: 'Bmoy73lhs-s',
     likes: 1890,
     comments: 112,
     views: 38900,
-    description: 'The legend continues. Gladiator II coming soon.'
+    description: 'A melancholic romantic mystery told in glances and half-truths, where longing is more dangerous than the crime itself.'
   },
 ];
+
 
 function Flicks() {
   const [flicks, setFlicks] = useState(mockFlicks);
