@@ -4,44 +4,236 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 4.25rem 2rem 0.5rem;
   position: relative;
 }
 
 .matching-container {
   width: 100%;
-  max-width: 450px;
+  max-width: 1200px;
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.matching-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+  grid-column: 1;
+  grid-row: 1;
+  align-items: stretch;
+  position: sticky;
+  top: 1.5rem;
+  z-index: 5;
+}
+
+.matching-filters.is-open {
+  position: static;
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 1.75rem;
+  align-items: start;
+  transition: transform 0.2s ease;
+  cursor: default;
+  user-select: none;
+  touch-action: pan-y;
+  position: relative;
+}
+
+
+.filter-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.search-input input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input input:focus {
+  border-color: var(--accent-red);
+  box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.25);
+}
+
+.filter-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.filter-row.is-collapsed {
+  display: none;
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.filter-toggle {
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.filter-toggle:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent-red);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.filter-toggle:focus-visible {
+  outline: 2px solid var(--accent-red);
+  outline-offset: 2px;
+}
+
+.image-toggle {
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.icon-btn {
+  width: 20px;
+  height: 20px;
+}
+
+.image-toggle:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent-red);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.image-toggle:focus-visible {
+  outline: 2px solid var(--accent-red);
+  outline-offset: 2px;
+}
+
+.filter-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.filter-control select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filter-custom-input {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  border: 1px dashed var(--border-color);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filter-custom-input:focus {
+  border-color: var(--accent-red);
+  box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.2);
+}
+
+.filter-control select:focus {
+  border-color: var(--accent-red);
+  box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.25);
+}
+
+.location-status {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
 }
 
 .card-stack {
   position: relative;
   width: 100%;
-  height: 600px;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 
-.profile-card {
-  position: absolute;
-  width: 100%;
+.profile-stage {
+  position: relative;
+  min-height: 100vh;
+}
+
+
+.photo-gallery {
+  display: block;
+  height: 70vh;
+  max-height: calc(100vh - 160px);
+  border-radius: 12px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.photo-section {
+  position: relative;
   height: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  cursor: grab;
-  user-select: none;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  will-change: transform;
-}
-
-.profile-card:active {
-  cursor: grabbing;
 }
 
 .card-image {
   width: 100%;
   height: 100%;
   position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.card-image.no-photo {
+  background: linear-gradient(160deg, rgba(24, 24, 32, 0.9), rgba(60, 20, 28, 0.85));
 }
 
 .card-image img {
@@ -50,15 +242,21 @@
   object-fit: cover;
 }
 
-.card-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
-  padding: 2rem 1.5rem 1.5rem;
-  color: var(--text-primary);
+
+.profile-details {
+  position: relative;
+  z-index: 2;
+  background: var(--bg-primary);
+  padding: 2rem 1.75rem 2.4rem;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
+  align-self: start;
+  max-height: calc(100vh - 160px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
+
+
 
 .card-info h2 {
   font-size: 2rem;
@@ -96,6 +294,36 @@
   gap: 0.5rem;
 }
 
+.card-prompts {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.prompt-card {
+  padding: 0.75rem 0.85rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.prompt-question {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  margin-bottom: 0.35rem;
+}
+
+.prompt-answer {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
 .genre-tag {
   background: var(--bg-tertiary);
   color: var(--text-primary);
@@ -105,26 +333,32 @@
   border: 1px solid var(--border-color);
 }
 
-.action-buttons {
+.image-action-buttons {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  z-index: 3;
 }
 
 .action-btn {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  font-size: 2rem;
+  min-width: 120px;
+  height: 52px;
+  border-radius: 12px;
+  font-size: 1.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
+
 
 .pass-btn {
   background: var(--bg-secondary);
@@ -149,12 +383,6 @@
   box-shadow: 0 6px 20px rgba(196, 30, 58, 0.4);
 }
 
-.profile-counter {
-  text-align: center;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  font-weight: 500;
-}
 
 .no-more-profiles {
   text-align: center;
@@ -174,17 +402,57 @@
 
 @media (max-width: 768px) {
   .matching-page {
-    padding: 1rem;
+    padding: 5rem 1rem 1rem;
+  }
+
+  .matching-container {
+    grid-template-columns: 1fr;
+  }
+
+  .matching-filters,
+  .card-stack,
+  .image-action-buttons {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .profile-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-details {
+    max-height: none;
+  }
+
+
+  .filter-actions {
+    justify-content: stretch;
+  }
+
+  .filter-toggle,
+  .image-toggle {
+    width: 100%;
+  }
+
+  .filter-row {
+    grid-template-columns: 1fr;
   }
   
   .card-stack {
-    height: 500px;
+    margin-bottom: 1.5rem;
+  }
+
+  .profile-stage {
+    min-height: 100vh;
+  }
+
+  .profile-details {
+    padding: 2rem 1.5rem 2.5rem;
   }
   
   .action-btn {
-    width: 60px;
+    width: 100%;
     height: 60px;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }
 
