@@ -1,6 +1,3 @@
-Here is the clean, plain-text version. I have removed all special characters and formatting so you can copy and paste this directly into a README.txt file without any issues.
-
-ONSTAGE - PROJECT README Where creatives find their cast and crew.
 
 OVERVIEW OnStage is a professional networking and discovery platform designed to disrupt traditional, gatekept casting. By focusing on creative alignment over superficial metrics, OnStage empowers screenwriters, directors, actors, and producers to connect based on talent, vision, and shared passion.
 
