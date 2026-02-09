@@ -1,26 +1,159 @@
+# 🎭 OnStage
 
-OVERVIEW OnStage is a professional networking and discovery platform designed to disrupt traditional, gatekept casting. By focusing on creative alignment over superficial metrics, OnStage empowers screenwriters, directors, actors, and producers to connect based on talent, vision, and shared passion.
+> A creative-first discovery and networking platform for film and media professionals.
 
-CORE FEATURES
+---
 
-BLIND MATCHING Our flagship feature allows users to swipe through potential collaborators with a focus on substance over style. -- Talent-First Toggle: Users can hide profile images to browse based solely on descriptions, credits, and vision statements. This removes unconscious bias and highlights true craft. -- Smart Filters: Narrow down your search by role (Actor, Director, Producer), genre, location, and project type.
+## 🌟 Overview
 
-FLICKS A high-energy, vertical video feed dedicated to visual portfolios. -- Catch the Vibe: Actors can post monologues, Cinematographers can post lighting tests, and Directors can post clips of their best work. -- Discovery in Motion: Designed to grab attention quickly, allowing for a more dynamic discovery experience than a static resume.
+**OnStage** is a professional networking and discovery platform designed to disrupt traditional, gatekept casting and hiring in the entertainment industry.
 
-SPOTLIGHT FEED A curated homepage marketplace highlighting active industry needs. -- Live Postings: Real-time listings from Screenwriters seeking Directors, Producers casting for series, and more. -- Quick View: Instantly see location, genre, and project requirements from the home screen.
+Instead of prioritizing résumés, representation, or connections, OnStage focuses on **creative alignment, vision, and talent**. It empowers screenwriters, directors, actors, and producers to connect based on shared passion and artistic direction.
 
-MY PROFILE Your digital industry business card. -- Customizable Portfolio: Edit your tags (e.g., Drama, Los Angeles, Union), upload images, and link your best Flicks. -- Messaging: Move from a match to a production with an integrated messaging system.
+Creative talent should not be buried.  
+**We hear you. We get you. OnStage connects creators through talent, vision, and creative alignment.**
 
-TECHNICAL STACK -- Frontend: React / Next.js -- Backend: Node.js / Express -- Database: PostgreSQL or MongoDB -- Video: Cloud-based hosting for Flicks streaming
+---
 
-HOW TO START
+## 🎯 Mission
 
-Clone the repository to your local machine.
+The entertainment industry often rewards who you know over what you can do. Many talented creatives remain unseen because discovery is tied to networks and gatekeepers.
 
-Run "npm install" to install all necessary dependencies.
+**OnStage flips discovery into collaboration.**
 
-Run npm create vite@latest 
+We believe:
+- Creative alignment > connections  
+- Vision > vanity metrics  
+- Talent deserves visibility  
 
-Run "npm run dev" to start the local development server.
+---
 
-MISSION Creative talent should not be buried. We hear you. We get you. OnStage connects creators through talent, vision, and creative alignment.
+## 💡 Inspiration
+
+We were inspired by how many creatives struggle to break into film and media:
+- Great scripts go unread  
+- Actors get typecast  
+- Directors rely on closed networks  
+
+We asked:  
+**What if discovery worked more like collaboration and less like networking?**
+
+OnStage was born from the idea that **creative alignment should matter more than connections.**
+
+---
+
+# 🚀 Core Features
+
+## 🎭 Blind Matching (Flagship Feature)
+
+Swipe through collaborators with a focus on substance over style.
+
+### Talent-First Toggle
+- Hide profile images  
+- Browse via descriptions, credits, and vision statements  
+- Reduce unconscious bias  
+
+### Smart Filters
+- Role (Actor, Director, Producer)  
+- Genre  
+- Location  
+- Project type  
+
+---
+
+## 🎬 Flicks
+
+A high-energy vertical video feed for visual portfolios.
+
+### Catch the Vibe
+- Actors → monologues  
+- Cinematographers → lighting tests  
+- Directors → film clips  
+
+### Discovery in Motion
+- Fast, dynamic portfolio discovery  
+- More engaging than static résumés  
+
+---
+
+## 🌟 Spotlight Feed
+
+A curated homepage marketplace for industry needs.
+
+### Live Postings
+- Writers seeking directors  
+- Producers casting series  
+- Active collaboration opportunities  
+
+### Quick View
+- Location  
+- Genre  
+- Project requirements  
+
+---
+
+## 👤 My Profile
+
+Your digital industry business card.
+
+### Customizable Portfolio
+- Tags (Drama, LA, Union, etc.)  
+- Images  
+- Linked Flicks  
+
+### Messaging
+- Move from match → production  
+- Built-in collaboration chat  
+
+---
+
+## 🤖 AI Assistant (Concept Feature)
+
+Helps users find collaborators based on intent.
+
+Example:
+> “I need a director for an indie thriller.”
+
+AI suggests matching creatives.
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+- React  
+- Next.js  
+- HTML  
+- CSS  
+- JavaScript  
+
+## Backend
+- Node.js  
+
+## Other Tools
+- YouTube embeds for reels/trailers  
+- Mock data for ecosystem simulation  
+
+---
+
+# ▶️ Getting Started
+
+## 1️⃣ Clone the Repository
+
+```bash
+git clone (https://github.com/Sara5722/OnStage.git)
+cd onstage
+
+## 2️⃣ Install Dependencies
+
+```npm install
+
+## 3️⃣ Start Dev Server
+
+```npm run dev
+
+## 4️⃣ (If Needed) Create Vite App
+
+```npm create vite@latest
+
+
