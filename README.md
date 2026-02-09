@@ -1,21 +1,21 @@
-# 🎭 OnStage
+# OnStage
 
 > A creative-first discovery and networking platform for film and media professionals.
 
 ---
 
-## 🌟 Overview
+## Overview
 
 **OnStage** is a professional networking and discovery platform designed to disrupt traditional, gatekept casting and hiring in the entertainment industry.
 
-Instead of prioritizing résumés, representation, or connections, OnStage focuses on **creative alignment, vision, and talent**. It empowers screenwriters, directors, actors, and producers to connect based on shared passion and artistic direction.
+Instead of prioritizing resumes, representation, or connections, OnStage focuses on **creative alignment, vision, and talent**. It empowers screenwriters, directors, actors, and producers to connect based on shared passion and artistic direction.
 
 Creative talent should not be buried.  
 **We hear you. We get you. OnStage connects creators through talent, vision, and creative alignment.**
 
 ---
 
-## 🎯 Mission
+## Mission
 
 The entertainment industry often rewards who you know over what you can do. Many talented creatives remain unseen because discovery is tied to networks and gatekeepers.
 
@@ -28,7 +28,7 @@ We believe:
 
 ---
 
-## 💡 Inspiration
+## Inspiration
 
 We were inspired by how many creatives struggle to break into film and media:
 - Great scripts go unread  
@@ -42,9 +42,9 @@ OnStage was born from the idea that **creative alignment should matter more than
 
 ---
 
-# 🚀 Core Features
+# Core Features
 
-## 🎭 Blind Matching (Flagship Feature)
+## Blind Matching (Flagship Feature)
 
 Swipe through collaborators with a focus on substance over style.
 
@@ -61,7 +61,7 @@ Swipe through collaborators with a focus on substance over style.
 
 ---
 
-## 🎬 Flicks
+## Flicks
 
 A high-energy vertical video feed for visual portfolios.
 
@@ -76,7 +76,7 @@ A high-energy vertical video feed for visual portfolios.
 
 ---
 
-## 🌟 Spotlight Feed
+## Spotlight Feed
 
 A curated homepage marketplace for industry needs.
 
@@ -92,7 +92,7 @@ A curated homepage marketplace for industry needs.
 
 ---
 
-## 👤 My Profile
+## My Profile
 
 Your digital industry business card.
 
@@ -107,7 +107,7 @@ Your digital industry business card.
 
 ---
 
-## 🤖 AI Assistant (Concept Feature)
+## AI Assistant (Concept Feature)
 
 Helps users find collaborators based on intent.
 
@@ -118,7 +118,7 @@ AI suggests matching creatives.
 
 ---
 
-# 🛠️ Tech Stack
+# Tech Stack
 
 ## Frontend
 - React  
@@ -136,24 +136,21 @@ AI suggests matching creatives.
 
 ---
 
-# ▶️ Getting Started
+# How to view!
 
-## 1️⃣ Clone the Repository
+## Clone the Repository
 
 bash
 git clone (https://github.com/Sara5722/OnStage.git)
 cd onstage
 
-## 2️⃣ Install Dependencies
+## Install Dependencies
 
 npm install
 
-## 3️⃣ Start Dev Server
+## Start Dev Server
 
 npm run dev
 
-## 4️⃣ (If Needed) Create Vite App
-
-npm create vite@latest
 
 
