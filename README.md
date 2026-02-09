@@ -140,20 +140,20 @@ AI suggests matching creatives.
 
 ## 1️⃣ Clone the Repository
 
-```bash
+bash
 git clone (https://github.com/Sara5722/OnStage.git)
 cd onstage
 
 ## 2️⃣ Install Dependencies
 
-```npm install
+npm install
 
 ## 3️⃣ Start Dev Server
 
-```npm run dev
+npm run dev
 
 ## 4️⃣ (If Needed) Create Vite App
 
-```npm create vite@latest
+npm create vite@latest
 
 
